@@ -4,17 +4,17 @@
             <div class="px-4 pb-6">
                 <ul class="mb-8 text-sm font-medium">
                     <li>
-                        <a class="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600" href="#homepage">
+                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="dashboard.php">
                             <span class="select-none">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600" href="course.php">
+                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="course.php">
                             <span class="select-none">Course</span>
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600" href="alumni.php">
+                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="alumni.php">
                             <span class="select-none">Alumni</span>
                         </a>
                     </li>

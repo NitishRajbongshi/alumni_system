@@ -1,11 +1,28 @@
 <?php
 include_once __DIR__ . "/../../backend/course/get.php";
+include_once __DIR__ . "/../../backend/course/add.php";
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
     session_destroy();
     header('location: login.php');
     exit;
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+    $code = $_POST['course_code'];
+    $name = $_POST['course_name'];
+
+    $add_obj = new AddCourse();
+    $status = $add_obj->add_course($code, $name);
+    if($status) {
+        header('location: course.php');
+    }
+    else {
+        echo "
+        <alert>Course added successfully</alert>
+        ";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -50,10 +67,10 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     <!-- Sidebar end -->
 
     <main class="container mx-auto">
-        <div>
+        <div class="lg:flex lg:gap-1">
             <!-- Available courses -->
             <section class="mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-1/3">
-                <h4 class="text-2xl my-3">Available Courses</h4>
+                <h4 class="text-2xl my-3 text-slate-800">Available Courses</h4>
                 <ul>
                     <?php
                     $course_obj = new GetCourse();
@@ -69,12 +86,12 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                         ?>
                             <div class="flex justify-between">
                                 <li>
-                                    <p class=" text-bold text-xl"><?php echo $course['course_code'] ?></p>
+                                    <p class="text-slate-700 text-bold text-xl"><i class="fa-solid fa-paperclip me-2"></i><?php echo $course['course_code'] ?></p>
                                 </li>
-                                <a href="#" class='delete-link' data-id=<?php echo $course_id ?>><i class="fa-solid fa-trash"></i></a>
+                                <a href="#" class='delete-link text-red-500' data-id=<?php echo $course_id ?>><i class="fa-solid fa-trash"></i></a>
                             </div>
                             <div class="border-b-2 border-gray-200 mb-4">
-                                <p class="my-2 text-bold text-md"><?php echo $course['course_name'] ?></p>
+                                <p class="my-2 text-gray-600  text-bold text-md"><?php echo $course['course_name'] ?></p>
                             </div>
                     <?php
                         }
@@ -84,7 +101,22 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             </section>
 
             <!-- Add new courses -->
-            <section></section>
+            <section class="mt-2 lg:mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-2/3">
+                <h4 class="text-2xl my-3 text-green-800">Add New Course </h4>
+                <form action="" method="POST">
+                    <div class="flex flex-col">
+                        <label class="my-2 text-sm text-green-700" for="course_code"><i class="fa-solid fa-pen-nib me-2"></i>Course code <span class="text-red-600">*</span></label>
+                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_code" name="course_code" placeholder="Eg: B.Sc CS">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="my-2 text-sm text-green-700" for="course_name"><i class="fa-solid fa-pen-nib me-2"></i>Course Name <span class="text-red-600">*</span></label>
+                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_name" name="course_name" placeholder="Eg: Bachelor of Science in Computer Science">
+                    </div>
+                    <div class="my-3">
+                        <input class="py-2 px-4 bg-green-50 text-green-800 hover:bg-green-100 hover:shadow-sm hover:cursor-pointer" type="submit" name="submit" value="Add Course">
+                    </div>
+                </form>
+            </section>
         </div>
     </main>
 </body>

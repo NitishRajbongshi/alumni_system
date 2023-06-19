@@ -47,20 +47,22 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         <div class="w-full lg:flex lg:gap-1 ">
             <!-- Prifile section-->
             <section class="mt-20 w-full h-[12rem] rounded-sm flex bg-white shadow-sm lg:w-1/3">
-                <div>
-                    <i class="w-full h-full fa-solid fa-user fa-4x p-10 bg-blue-50 text-blue-600"></i>
+                <div class="flex justify-center items-center bg-blue-50">
+                    <div>
+                        <i class="w-full h-full fa-solid fa-user fa-4x p-10  text-blue-600"></i>
+                    </div>
                 </div>
                 <div class="w-full p-2 flex flex-col justify-center">
-                    <p class="text-blue-600 text-2xl mb-2 border-b-2 border-blue-200">Admin Profile</p>
-                    <p class="font-bold text-blue-900 my-2">Email :<?php echo $_SESSION['email'] ?></p>
-                    <button class="w-full bg-blue-100 text-blue-600 my-1 py-1 rounded-md">Change Password</button>
-                    <button class="w-full bg-red-100 text-red-600 my-1 py-1 rounded-md">Logout</button>
+                    <p class="text-blue-600 text-2xl mb-2 border-b-2 border-blue-200">Profile</p>
+                    <p class="font-bold text-blue-900 my-2"><i class="fa-solid fa-envelope me-2"></i>Email :<?php echo $_SESSION['email'] ?></p>
+                    <button class="w-full bg-blue-100 text-blue-600 my-1 py-1 rounded-md"><i class="fa-solid fa-pen-to-square me-2"></i>Change Password</button>
+                    <button class="w-full bg-red-100 text-red-600 my-1 py-1 rounded-md"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</button>
                 </div>
             </section>
             <section class="mt-2 w-full h-[12rem] rounded-sm bg-white shadow-sm p-4 lg:w-2/3 lg:mt-20">
-                <p class="text-2xl text-red-600 border-b-2 border-red-200">Notification</p>
+                <p class="text-2xl text-red-600 border-b-2 border-red-200">Notification <i class="fa-solid fa-comment"></i></p>
                 <ul>
-                    <li class="my-2 text-gray-500">No notification found</li>
+                    <li class="my-2 text-gray-500"><i class="fa-solid fa-face-smile me-2"></i>No notification found</li>
                 </ul>
             </section>
         </div>
