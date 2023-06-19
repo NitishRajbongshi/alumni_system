@@ -1,0 +1,9 @@
+{
+    "server"                :   "localhost",
+    "password"              :   "",
+    "username"              :   "root",
+    "dbname"                :   "alumni_system_db",
+    "category"              :   "category",
+    "alumni"                :   "alumni",
+    "admin"                 :   "admin"
+}
