@@ -3,7 +3,7 @@
     "password"              :   "",
     "username"              :   "root",
     "dbname"                :   "alumni_system_db",
-    "category"              :   "category",
-    "alumni"                :   "alumni",
+    "course"                :   "course_table",
+    "alumni"                :   "alumni_details",
     "admin"                 :   "admin"
 }
