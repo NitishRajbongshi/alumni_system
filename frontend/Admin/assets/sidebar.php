@@ -4,18 +4,18 @@
             <div class="px-4 pb-6">
                 <ul class="mb-8 text-sm font-medium">
                     <li>
-                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="dashboard.php">
-                            <span class="select-none">Dashboard</span>
+                        <a class="text-lg flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500" href="dashboard.php">
+                            <span class="select-none"><i class="fa-solid fa-house me-2"></i>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="course.php">
-                            <span class="select-none">Course</span>
+                        <a class="text-lg flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500" href="course.php">
+                            <span class="select-none"><i class="fa-solid fa-book-open-reader me-2"></i>Course</span>
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-700" href="alumni.php">
-                            <span class="select-none">Alumni</span>
+                        <a class="text-lg flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500" href="alumni.php">
+                            <span class="select-none"><i class="fa-solid fa-graduation-cap me-2"></i>Alumni</span>
                         </a>
                     </li>
                 </ul>
