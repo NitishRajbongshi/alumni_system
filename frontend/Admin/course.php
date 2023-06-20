@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     else {
         echo "
-        <alert>Course added successfully</alert>
+        <alert>Course not added</alert>
         ";
     }
 }

@@ -4,6 +4,6 @@
     "username"              :   "root",
     "dbname"                :   "alumni_system_db",
     "course"                :   "course_table",
-    "alumni"                :   "alumni_details",
+    "alumni"                :   "alumni_table",
     "admin"                 :   "admin"
 }
