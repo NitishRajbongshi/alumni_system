@@ -43,6 +43,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         button: "Close",
       });
     }
+
     function not_added() {
       swal({
         title: "Failed!",
@@ -51,6 +52,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         button: "Close",
       });
     }
+
     function no_course() {
       swal({
         title: "Failed!",
@@ -81,28 +83,14 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     $position = $_POST['position'];
 
     if ($course == 'none') {
-      echo '
-        <script>
-        no_course();
-        </script>
-      ';
-      // header('location: alumni.php');
+      echo '<script>no_course();</script>';
     } else {
       $add_obj = new AddAlumni();
       $status = $add_obj->add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $pass_year, $cgpa, $course, $address, $position);
       if ($status) {
-        echo '
-        <script>
-        added();
-        </script>
-        ';
-        // header('location: alumni.php');
+        echo '<script>added();</script>';
       } else {
-        echo '
-        <script>
-        not_added();
-        </script>
-        ';
+        echo '<script>not_added();</script>';
       }
     }
   }
@@ -123,6 +111,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     <div class="lg:flex lg:gap-1">
       <!-- Add new alumni -->
       <section class="mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-2/3">
+        <h1 class="my-2 text-xl text-blue-700 border-b-2 border-blue-200">Add New Alumni</h1>
         <form action="" method="POST">
           <div class="md:flex">
             <div class="p-2 w-full md:w-1/3 flex flex-col">
@@ -204,7 +193,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
           <div class="md:flex">
             <div class="p-2 w-full flex flex-col">
               <label class="text-sm text-blue-500" for="position">Current Position <span class="text-red-500">*</span></label>
-              <textarea id="position" name="position" rows="2" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100" maxlength="150" placeholder="Professor at Pub Kamrup College" required></textarea>
+              <textarea id="position" name="position" rows="2" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100" maxlength="150" placeholder="Professor at Junior College" required></textarea>
             </div>
           </div>
           <div>
@@ -215,10 +204,32 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
 
       <!-- Show statistics -->
       <section class="mt-2 lg:mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-1/3">
+        <h1 class="my-2 text-xl text-red-700 border-b-2 border-red-200">Available Data</h1>
+        <div class="flex gap-3">
+          <div class="w-1/2 shadow-lg flex flex-col justify-center items-center rounded-2xl py-10 bg-yellow-200 text-yellow-600">
+            <p>Course</p>
+            <p class="text-4xl font-bold">4</p>
+          </div>
+          <div class="w-1/2 shadow-lg flex flex-col justify-center items-center rounded-2xl py-10 bg-blue-200 text-blue-600">
+            <p>Alumni</p>
+            <p class="text-4xl font-bold">10</p>
+          </div>
+        </div>
 
+        <h1 class="my-2 text-xl text-red-700 border-b-2 border-red-200">Quick links</h1>
+        <ul>
+          <li><a href="">Dashboard</a></li>
+          <li><a href="">Dashboard</a></li>
+          <li><a href="">Dashboard</a></li>
+          
+        </ul>
       </section>
     </div>
   </main>
+
+  <?php
+  include_once __DIR__ . '/../../components/footer.php';
+  ?>
 </body>
 
 </html>

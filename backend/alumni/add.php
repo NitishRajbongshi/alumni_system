@@ -45,4 +45,22 @@ class AddAlumni
         } else
             return false;
     }
+
+    public function count_alumni()
+    {
+        $query = "
+        SELECT course_table.course_code, COUNT(alumni_table.course) AS alumni_count
+        FROM course_table
+        LEFT JOIN alumni_table ON course_table.course_code = alumni_table.course
+        GROUP BY course_table.course_code;
+        ";
+        $stmt = $this->conn->prepare($query);
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                $alumnies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $alumnies;
+            } else
+                return false;
+        }
+    }
 }

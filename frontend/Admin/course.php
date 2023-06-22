@@ -9,16 +9,15 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $code = $_POST['course_code'];
     $name = $_POST['course_name'];
 
     $add_obj = new AddCourse();
     $status = $add_obj->add_course($code, $name);
-    if($status) {
+    if ($status) {
         header('location: course.php');
-    }
-    else {
+    } else {
         echo "
         <alert>Course not added</alert>
         ";
