@@ -97,6 +97,21 @@ class Alumni
         }
     }
 
+    public function get_alumni($id) {
+        $query = "
+        SELECT * FROM ".$this->alumni_table." WHERE registration_no = :id;
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam("id", $id);
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() == 1) {
+                $alumni = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $alumni;
+            } else
+                return false;
+        }
+    }
+
     public function delete_alumni($course_code) {
         $query = "
         DELETE FROM ".$this->alumni_table." WHERE course = :course;
@@ -105,6 +120,22 @@ class Alumni
         $stmt->bindParam("course", $course_code);
         if ($stmt->execute()) {
             return true;
+        }
+        else
+            return false;
+    }
+
+    public function delete_single_alumni($id) {
+        $query = "
+        DELETE FROM ".$this->alumni_table." WHERE registration_no = :id;
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam("id", $id);
+        if ($stmt->execute()) {
+            if($stmt->rowCount() == 1)
+                return true;
+            else
+                return false;
         }
         else
             return false;
