@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__. "/../../connections/db_connect.php";
 
-class Login {
+class Admin {
     private $conn;
     private $admin_table;
 

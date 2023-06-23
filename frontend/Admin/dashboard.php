@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../../backend/alumni/add.php';
+include_once __DIR__ . '/../../backend/alumni/Alumni.php';
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
@@ -74,12 +74,19 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             <p class="my-2 text-md text-blue-500">How many alumni do we have??</p>
             <div class="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2">
                 <?php
-                $count_obj = new AddAlumni();
+                $count_obj = new Alumni();
                 $alumnies = $count_obj->count_alumni();
                 if ($alumnies == false) {
-                    echo "
-                    <p>No Course found</p>
-                    ";
+                ?>
+                    <div class="p-2 bg-blue-200 flex flex-col justify-center items-center rounded-2xl shadow-md hover:shadow-lg">
+                        <div class="text-2xl flex items-center justify-center w-28 h-28 text-white shadow-md font-bold rounded-full bg-blue-600">
+                            <span><i class="fa-solid fa-face-sad-cry fa-2x"></i></span>
+                        </div>
+                        <div>
+                            <h1 class="text-sm text-blue-600 font-semibold my-3">No course Added</h1>
+                        </div>
+                    </div>
+                    <?php
                 } else {
                     foreach ($alumnies as $alumni) {
                         $total_alumni = $alumni['alumni_count'];

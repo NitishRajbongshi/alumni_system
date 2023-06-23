@@ -1,6 +1,5 @@
 <?php
-include_once __DIR__ . "/../../backend/course/get.php";
-include_once __DIR__ . "/../../backend/course/add.php";
+include_once __DIR__ . "/../../backend/course/Course.php";
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
@@ -13,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $code = $_POST['course_code'];
     $name = $_POST['course_name'];
 
-    $add_obj = new AddCourse();
+    $add_obj = new Course();
     $status = $add_obj->add_course($code, $name);
     if ($status) {
         header('location: course.php');
@@ -72,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <h4 class="text-2xl my-3 text-slate-800">Available Courses</h4>
                 <ul>
                     <?php
-                    $course_obj = new GetCourse();
+                    $course_obj = new Course();
                     $result = $course_obj->get_course();
                     if ($result == false) {
                     ?>

@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . "/../../backend/course/get.php";
-include_once __DIR__ . "/../../backend/alumni/add.php";
+include_once __DIR__ . "/../../backend/course/Course.php";
+include_once __DIR__ . "/../../backend/alumni/Alumni.php";
 
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
@@ -94,7 +94,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     if ($course == 'none') {
       echo '<script>no_course();</script>';
     } else {
-      $add_obj = new AddAlumni();
+      $add_obj = new Alumni();
       $status = $add_obj->add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $batch, $pass_year, $cgpa, $course, $address, $position);
       if ($status == 1) {
         echo '<script>added();</script>';
@@ -175,7 +175,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
               <label class="text-sm text-blue-500" for="course">Course <span class="text-red-500">*</span></label>
               <select name="course" id="course" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100 ">
                 <?php
-                $course_obj = new GetCourse();
+                $course_obj = new Course();
                 $result = $course_obj->get_course();
                 var_dump($result);
                 if ($result == false) {
