@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2023 at 08:20 PM
+-- Generation Time: Jun 22, 2023 at 08:50 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -43,6 +43,28 @@ INSERT INTO `admin` (`email`, `password`, `joined_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `alumni_table`
+--
+
+CREATE TABLE `alumni_table` (
+  `registration_no` varchar(20) NOT NULL,
+  `rollno` varchar(20) NOT NULL,
+  `fname` varchar(15) NOT NULL,
+  `mname` varchar(15) NOT NULL,
+  `lname` varchar(18) NOT NULL,
+  `dob` varchar(10) NOT NULL,
+  `phone` int(10) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `pass_year` int(4) NOT NULL,
+  `cgpa` int(4) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `position` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course_table`
 --
 
@@ -54,16 +76,6 @@ CREATE TABLE `course_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `course_table`
---
-
-INSERT INTO `course_table` (`course_id`, `course_code`, `course_name`, `create_at`) VALUES
-(22, 'B.Sc CS', 'Bachelor of Science in Computer Science', '2023-06-19 23:22:01'),
-(23, 'BCA', 'Bachelor of Computer Application', '2023-06-19 23:22:22'),
-(24, 'M.Sc CS', 'Master of Science in Computer Science', '2023-06-19 23:22:43'),
-(26, 'B.Voc IT', 'Bachelor of Vocational in Information Technology', '2023-06-19 23:24:37');
-
---
 -- Indexes for dumped tables
 --
 
@@ -72,6 +84,12 @@ INSERT INTO `course_table` (`course_id`, `course_code`, `course_name`, `create_a
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `alumni_table`
+--
+ALTER TABLE `alumni_table`
+  ADD PRIMARY KEY (`registration_no`);
 
 --
 -- Indexes for table `course_table`
@@ -88,7 +106,7 @@ ALTER TABLE `course_table`
 -- AUTO_INCREMENT for table `course_table`
 --
 ALTER TABLE `course_table`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

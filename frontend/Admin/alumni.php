@@ -43,6 +43,14 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         button: "Close",
       });
     }
+    function already_added() {
+      swal({
+        title: "Failed!",
+        text: "Already added this alumni",
+        icon: "error",
+        button: "Close",
+      });
+    }
 
     function not_added() {
       swal({
@@ -87,8 +95,10 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     } else {
       $add_obj = new AddAlumni();
       $status = $add_obj->add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $pass_year, $cgpa, $course, $address, $position);
-      if ($status) {
+      if ($status == 1) {
         echo '<script>added();</script>';
+      } elseif($status == 2) {
+        echo '<script>already_added();</script>';
       } else {
         echo '<script>not_added();</script>';
       }
@@ -107,10 +117,10 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
   ?>
   <!-- Sidebar end -->
 
-  <main class="container mx-auto">
+  <main class="container mx-auto p-1">
     <div class="lg:flex lg:gap-1">
       <!-- Add new alumni -->
-      <section class="mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-2/3">
+      <section class="mt-20 p-5 w-full h-auto bg-white rounded-xl shadow-md hover:shadow-lg lg:w-2/3">
         <h1 class="my-2 text-xl text-blue-700 border-b-2 border-blue-200">Add New Alumni</h1>
         <form action="" method="POST">
           <div class="md:flex">
@@ -197,13 +207,13 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             </div>
           </div>
           <div>
-            <input class="bg-blue-100 text-blue-600 px-4 py-2 hover:bg-blue-300 hover:cursor-pointer hover:shadow-sm" type="submit" name="submit" value="Add Alumni">
+            <input class="bg-blue-100 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-300 hover:cursor-pointer hover:shadow-sm" type="submit" name="submit" value="Add Alumni">
           </div>
         </form>
       </section>
 
       <!-- Show statistics -->
-      <section class="mt-2 lg:mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-1/3">
+      <section class="mt-2 lg:mt-20 p-2 w-full h-auto bg-white rounded-xl shadow-md hover:shadow-lg lg:w-1/3">
         <h1 class="my-2 text-xl text-red-700 border-b-2 border-red-200">Available Data</h1>
         <div class="flex gap-3">
           <div class="w-1/2 shadow-lg flex flex-col justify-center items-center rounded-2xl py-10 bg-yellow-200 text-yellow-600">
