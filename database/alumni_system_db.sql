@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2023 at 08:50 PM
+-- Generation Time: Jun 23, 2023 at 08:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,6 +55,7 @@ CREATE TABLE `alumni_table` (
   `dob` varchar(10) NOT NULL,
   `phone` int(10) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `batch` varchar(9) NOT NULL,
   `pass_year` int(4) NOT NULL,
   `cgpa` int(4) NOT NULL,
   `course` varchar(50) NOT NULL,

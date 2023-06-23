@@ -19,8 +19,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="text-lg flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500" href="view.php">
-                            <span class="select-none"><i class="fa-solid fa-graduation-cap me-2"></i>View</span>
+                        <a class="text-lg flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-slate-500" href="database.php">
+                            <span class="select-none"><i class="fa-solid fa-database me-2"></i>Database</span>
                         </a>
                     </li>
                 </ul>

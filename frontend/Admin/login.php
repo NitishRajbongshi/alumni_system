@@ -1,3 +1,6 @@
+<?php
+include_once __DIR__ . "/../../backend/admin/Admin.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +38,11 @@
 
 <body>
     <?php
-    include_once __DIR__ . "/../../backend/admin/login.php";
-
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $login_obj = new Login();
+        $login_obj = new Admin();
         $stmt = $login_obj->login($email, $password);
         if ($stmt) {
             session_start();
@@ -75,5 +76,4 @@
         </div>
     </div>
 </body>
-
 </html>

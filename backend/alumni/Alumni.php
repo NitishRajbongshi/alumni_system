@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . "/../../connections/db_connect.php";
 
-class AddAlumni
+class Alumni
 {
     private $conn;
     private $alumni_table;
@@ -95,5 +95,18 @@ class AddAlumni
             } else
                 return false;
         }
+    }
+
+    public function delete_alumni($course_code) {
+        $query = "
+        DELETE FROM ".$this->alumni_table." WHERE course = :course;
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam("course", $course_code);
+        if ($stmt->execute()) {
+            return true;
+        }
+        else
+            return false;
     }
 }

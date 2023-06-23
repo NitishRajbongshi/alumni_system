@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/../../backend/course/get.php';
-include_once __DIR__ . '/../../backend/alumni/add.php';
+include_once __DIR__ . '/../../backend/course/Course.php';
+include_once __DIR__ . '/../../backend/alumni/Alumni.php';
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
@@ -62,7 +62,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                     </thead>
                     <tbody>
                         <?php
-                        $course_obj = new GetCourse();
+                        $course_obj = new Course();
                         $result = $course_obj->get_course();
                         if ($result) {
                             $courses = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -81,7 +81,9 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             </div>
         </section>
         <?php
-        $all_alumni_obj = new AddAlumni();
+        $all_alumni_obj = new Alumni();
+        $result = $all_alumni_obj->get_all_alumni();
+        $all_alumni_obj = new Alumni();
         $result = $all_alumni_obj->get_all_alumni();
         ?>
         <section class="my-4">
@@ -101,8 +103,6 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                     </thead>
                     <tbody>
                         <?php
-                        $all_alumni_obj = new AddAlumni();
-                        $result = $all_alumni_obj->get_all_alumni();
                         if ($result) {
                             $alumnies = $result->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($alumnies as $alumni) {
@@ -135,8 +135,6 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                     </thead>
                     <tbody>
                         <?php
-                        $all_alumni_obj = new AddAlumni();
-                        $result = $all_alumni_obj->get_all_alumni();
                         if ($result) {
                             $courses = $result->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($alumnies as $alumni) {
@@ -170,8 +168,6 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                     </thead>
                     <tbody>
                         <?php
-                        $all_alumni_obj = new AddAlumni();
-                        $result = $all_alumni_obj->get_all_alumni();
                         if ($result) {
                             $courses = $result->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($alumnies as $alumni) {
@@ -204,8 +200,6 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                     </thead>
                     <tbody>
                         <?php
-                        $all_alumni_obj = new AddAlumni();
-                        $result = $all_alumni_obj->get_all_alumni();
                         if ($result) {
                             $courses = $result->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($alumnies as $alumni) {
