@@ -30,14 +30,14 @@
     </div>
 
     <!-- image -->
-    <div class="container mx-auto ">
-        <div class="flex w-[100%] justify-center items-center">
-            <img src="assets/images/alumni.jpg" alt="alumni" class="h-auto w-full">
+    <div class="container mx-auto p-1">
+        <div class="rounded-md md:rounded-xl shadow-md hover:shadow-lg flex w-[100%] justify-center items-center">
+            <img src="assets/images/alumni.jpg" alt="alumni" class="rounded-md md:rounded-xl h-auto w-full">
         </div>
 
         <div class="md:flex md:gap-4 mt-4">
             <!-- About -->
-            <div class="w-full p-4 bg-white md:w-1/2">
+            <div class="w-full p-4 rounded-md md:rounded-xl shadow-md hover:shadow-lg bg-white  md:w-1/2">
                 <p class="py-4 text-2xl font-bold text-blue-600">About</p>
                 <p class="py-4 text-justify text-gray-500 text-md">
                     <i class="fa-solid fa-quote-left"></i>
@@ -45,7 +45,7 @@
                 </p>
             </div>
 
-            <div class="w-full p-4 bg-white md:w-1/2">
+            <div class="w-full p-4 rounded-md shadow-md bg-white mt-2 md:mt-0 md:w-1/2 md:rounded-xl  hover:shadow-lg">
                 <p class="py-4 text-2xl font-bold text-blue-600">Instruction</p>
 
                 <ul class="py-4 text-justify text-gray-500 text-md">

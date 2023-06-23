@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     ?>
     <!-- Sidebar end -->
 
-    <main class="container mx-auto">
+    <main class="container mx-auto p-1">
         <div class="lg:flex lg:gap-1">
             <!-- Available courses -->
-            <section class="mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-1/3">
+            <section class="mt-20 p-2 w-full h-auto bg-white rounded-xl shadow-md hover:shadow-lg lg:w-1/3">
                 <h4 class="text-2xl my-3 text-slate-800">Available Courses</h4>
                 <ul>
                     <?php
@@ -100,19 +100,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </section>
 
             <!-- Add new courses -->
-            <section class="mt-2 lg:mt-20 p-2 w-full h-auto rounded-sm bg-white shadow-sm lg:w-2/3">
+            <section class="mt-2 lg:mt-20 p-2 w-full h-auto bg-white rounded-xl shadow-md hover:shadow-lg lg:w-2/3">
                 <h4 class="text-2xl my-3 text-green-800">Add New Course </h4>
                 <form action="" method="POST">
                     <div class="flex flex-col">
                         <label class="my-2 text-sm text-green-700" for="course_code"><i class="fa-solid fa-pen-nib me-2"></i>Course code <span class="text-red-600">*</span></label>
-                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_code" name="course_code" placeholder="Eg: B.Sc CS">
+                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_code" name="course_code" placeholder="Eg: B.Sc CS" required>
                     </div>
                     <div class="flex flex-col">
                         <label class="my-2 text-sm text-green-700" for="course_name"><i class="fa-solid fa-pen-nib me-2"></i>Course Name <span class="text-red-600">*</span></label>
-                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_name" name="course_name" placeholder="Eg: Bachelor of Science in Computer Science">
+                        <input class="w-full bg-gray-50 p-2 text-md outline-1 outline-green-100" type="text" id="course_name" name="course_name" placeholder="Eg: Bachelor of Science in Computer Science" required>
                     </div>
                     <div class="my-3">
-                        <input class="py-2 px-4 bg-green-50 text-green-800 hover:bg-green-100 hover:shadow-sm hover:cursor-pointer" type="submit" name="submit" value="Add Course">
+                        <input class="py-2 px-4 rounded-sm bg-green-100 text-green-800 hover:bg-green-500 hover:shadow-lg hover:cursor-pointer" type="submit" name="submit" value="Add Course">
                     </div>
                 </form>
             </section>

@@ -58,7 +58,7 @@
         }
     }
     ?>
-    <div class="flex justify-center items-center h-[100vh] bg-gray-100">
+    <div class="flex justify-center items-center h-[100vh] bg-gray-100 p-2">
         <div class="h-auto w-[24rem] flex flex-col justify-center items-center bg-white shadow-sm p-10">
             <div class="logo text-red-600 p-4 bg-red-100 rounded-full">
                 <i class="fa-sharp fa-solid fa-unlock fa-2x"></i>

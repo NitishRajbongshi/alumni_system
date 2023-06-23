@@ -44,33 +44,34 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     ?>
     <!-- Sidebar end -->
 
-    <main class="container m-auto">
-        <div class="w-full lg:flex lg:gap-1 ">
+    <main class="container m-auto p-1">
+        <div class="w-full flex flex-col gap-2 md:flex-row ">
             <!-- Prifile section-->
-            <section class="mt-20 w-full h-[12rem] rounded-sm flex bg-white shadow-sm lg:w-1/3">
-                <div class="flex justify-center items-center bg-blue-200">
-                    <div>
-                        <i class="w-full h-full fa-solid fa-user fa-4x p-10  text-blue-600"></i>
+            <section class="mt-20 w-full p-4 rounded-xl shadow-md hover:shadow-lg bg-white md:w-1/3">
+                <div class="w-full p-2 flex flex-col justify-center items-center">
+                    <div class="bg-blue-100 rounded-full">
+                        <i class="w-full h-full fa-solid fa-user fa-3x p-10  text-blue-600"></i>
                     </div>
-                </div>
-                <div class="w-full p-2 flex flex-col justify-center">
-                    <p class="text-blue-600 text-2xl mb-2 border-b-2 border-blue-200">Profile</p>
-                    <p class="font-bold text-blue-900 my-2"><i class="fa-solid fa-envelope me-2"></i>Email :<?php echo $_SESSION['email'] ?></p>
-                    <button class="w-full bg-blue-100 text-blue-600 my-1 py-1 rounded-md"><i class="fa-solid fa-pen-to-square me-2"></i>Change Password</button>
-                    <button class="w-full bg-red-100 text-red-600 my-1 py-1 rounded-md"><i class="fa-solid fa-right-from-bracket me-2"></i><a href="../../backend/admin/logout.php">Logout</a></button>
+                    <p class="font-bold text-blue-900 my-2"><i class="fa-solid fa-envelope me-2"></i><?php echo $_SESSION['email'] ?></p>
+                    <div class="py-2 px-5 rounded-md bg-red-100">
+                        <button class="text-sm text-red-600 "><i class="fa-solid fa-right-from-bracket me-2"></i><a href="../../backend/admin/logout.php">Logout</a></button>
+                    </div>
+
+                    <!-- <button class="mt-10 text-sm bg-blue-100 text-blue-600 my-1 py-1 rounded-md"><i class="fa-solid fa-pen-to-square me-2"></i>Change Password</button> -->
                 </div>
             </section>
-            <section class="mt-2 w-full h-[12rem] rounded-sm bg-white shadow-sm p-4 lg:w-2/3 lg:mt-20">
-                <p class="text-2xl text-red-600 border-b-2 border-red-200">Notification <i class="fa-solid fa-comment"></i></p>
+            <section class="mt-2 w-full  md:w-2/3 md:mt-20">
+                <img class="rounded-xl shadow-md hover:shadow-lg" src="../../assets/images/banner.png" alt="banner" width="100%">
+                <!-- <p class="text-2xl text-red-600 border-b-2 border-red-200">Notification <i class="fa-solid fa-comment"></i></p>
                 <ul>
                     <li class="my-2 text-gray-500"><i class="fa-solid fa-face-smile me-2"></i>No notification found</li>
-                </ul>
+                </ul> -->
             </section>
         </div>
 
         <div class="container mx-auto py-8">
-            <h1 class="text-xl font-bold text-red-600">Statistics</h1>
-            <p class="my-2 text-sm text-gray-500">Total number of alumni per course</p>
+            <h1 class="text-2xl font-bold text-red-600">Statistics</h1>
+            <p class="my-2 text-md text-blue-500">How many alumni do we have??</p>
             <div class="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2">
                 <?php
                 $count_obj = new AddAlumni();
@@ -84,7 +85,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                         $total_alumni = $alumni['alumni_count'];
                         $course = $alumni['course_code']; ?>
 
-                        <div class="p-2 bg-blue-200 flex flex-col justify-center items-center">
+                        <div class="p-2 bg-blue-200 flex flex-col justify-center items-center rounded-2xl shadow-md hover:shadow-lg">
                             <div class="text-2xl flex items-center justify-center w-28 h-28 text-white shadow-md font-bold rounded-full bg-blue-600">
                                 <span><?php echo $total_alumni ?></span>
                             </div>
@@ -99,9 +100,10 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             </div>
         </div>
         </div>
-
-
     </main>
+    <?php
+    include_once __DIR__ . '/../../components/footer.php';
+    ?>
 </body>
 
 </html>
