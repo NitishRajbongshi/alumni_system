@@ -140,4 +140,16 @@ class Alumni
         else
             return false;
     }
+
+    public function get_alumni_count()
+    {
+        $query = "
+        SELECT COUNT(*) AS total_number FROM ".$this->alumni_table." WHERE 1;
+        ";
+        $stmt = $this->conn->prepare($query);
+        if ($stmt->execute()) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
 }
