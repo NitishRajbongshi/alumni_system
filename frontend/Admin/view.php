@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../../backend/course/get.php';
+include_once __DIR__ . '/../../backend/alumni/add.php';
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
@@ -47,9 +48,10 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     ?>
     <!-- Sidebar end -->
 
-    <main class="container mx-auto mt-20 p-1">
+    <main class="container mx-auto mt-20 mb-4 p-1">
         <section class="container">
-            <h1 class="text-xl text-red-500 font-bold mb-2 border-s-2 border-red-500 p-2 bg-red-200 rounded-lg">Course Table</h1>
+            <h1 class="text-xl text-green-500 font-bold mb-2 border-s-2 border-green-500 p-2 bg-green-100 rounded-lg">
+                Course Details</h1>
             <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg">
                 <table class="table" id="course_table">
                     <thead>
@@ -78,6 +80,148 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
                 </table>
             </div>
         </section>
+        <?php
+        $all_alumni_obj = new AddAlumni();
+        $result = $all_alumni_obj->get_all_alumni();
+        ?>
+        <section class="my-4">
+            <h1 class="text-2xl font-bold text-blue-800">Alumni Details</h1>
+        </section>
+        <section class="container my-4">
+            <h1 class="text-md text-red-500 font-bold mb-2 border-s-2 border-red-500 p-2 bg-red-100 rounded-lg">Educational Details</h1>
+            <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg">
+                <table class="table" id="alumni_contact">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Registration No.</th>
+                            <th scope="col">Rollno</th>
+                            <th scope="col">Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $all_alumni_obj = new AddAlumni();
+                        $result = $all_alumni_obj->get_all_alumni();
+                        if ($result) {
+                            $alumnies = $result->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($alumnies as $alumni) {
+                                echo '
+                                <tr class="border-b-2">
+                                    <td>' . $alumni["fname"] . ' ' . $alumni["lname"] . ' ' . $alumni["mname"] . '</td>
+                                    <td>' . $alumni["registration_no"] . '</td>
+                                    <td>' . $alumni["rollno"] . '</td>
+                                    <td>' . $alumni["course"] . '</td>
+                                </tr>
+                                ';
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="container my-4">
+            <h1 class="text-md text-red-500 font-bold mb-2 border-s-2 border-red-500 p-2 bg-red-100 rounded-lg">Contact Details</h1>
+            <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg">
+                <table class="table" id="alumni_education">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $all_alumni_obj = new AddAlumni();
+                        $result = $all_alumni_obj->get_all_alumni();
+                        if ($result) {
+                            $courses = $result->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($alumnies as $alumni) {
+                                echo '
+                                <tr class="border-b-2">
+                                    <td>' . $alumni["fname"] . ' ' . $alumni["lname"] . ' ' . $alumni["mname"] . '</td>
+                                    <td>' . $alumni["phone"] . '</td>
+                                    <td>' . $alumni["email"] . '</td>
+                                    <td>' . $alumni["address"] . '</td>
+                                </tr>
+                                ';
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="container my-4">
+            <h1 class="text-md text-red-500 font-bold mb-2 border-s-2 border-red-500 p-2 bg-red-100 rounded-lg">Other Details</h1>
+            <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg">
+                <table class="table" id="other_details">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">D.O.B</th>
+                            <th scope="col">CGPA</th>
+                            <th scope="col">Batch</th>
+                            <th scope="col">Passing Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $all_alumni_obj = new AddAlumni();
+                        $result = $all_alumni_obj->get_all_alumni();
+                        if ($result) {
+                            $courses = $result->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($alumnies as $alumni) {
+                                echo '
+                                <tr class="border-b-2">
+                                    <td>' . $alumni["fname"] . ' ' . $alumni["lname"] . ' ' . $alumni["mname"] . '</td>
+                                    <td>' . $alumni["dob"] . '</td>
+                                    <td>' . $alumni["cgpa"] . '</td>
+                                    <td>' . $alumni["batch"] . '</td>
+                                    <td>' . $alumni["pass_year"] . '</td>
+                                </tr>
+                                ';
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="container my-4">
+            <h1 class="text-md text-red-500 font-bold mb-2 border-s-2 border-red-500 p-2 bg-red-100 rounded-lg">Current Position</h1>
+            <div class="bg-white p-2 rounded-lg shadow-md hover:shadow-lg">
+                <table class="table" id="position">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Position</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $all_alumni_obj = new AddAlumni();
+                        $result = $all_alumni_obj->get_all_alumni();
+                        if ($result) {
+                            $courses = $result->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($alumnies as $alumni) {
+                                echo '
+                                <tr class="border-b-2">
+                                    <td>' . $alumni["fname"] . ' ' . $alumni["lname"] . ' ' . $alumni["mname"] . '</td>
+                                    <td>' . $alumni["position"] . '</td>
+                                </tr>
+                                ';
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 
     <!-- script for data table -->
@@ -89,7 +233,16 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         });
 
         $(document).ready(function() {
-            $('#alumni_table').DataTable();
+            $('#alumni_education').DataTable();
+        });
+        $(document).ready(function() {
+            $('#alumni_contact').DataTable();
+        });
+        $(document).ready(function() {
+            $('#other_details').DataTable();
+        });
+        $(document).ready(function() {
+            $('#position').DataTable();
         });
     </script>
 </body>
