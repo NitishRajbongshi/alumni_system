@@ -224,21 +224,24 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
         <div class="flex gap-3">
           <div class="w-1/2 shadow-lg flex flex-col justify-center items-center rounded-2xl py-10 bg-yellow-200 text-yellow-600">
             <p>Course</p>
-            <p class="text-4xl font-bold">4</p>
+            <?php
+            $obj = new Course();
+            $result = $obj->get_course_count();
+            ?>
+            <p class="text-4xl font-bold"><?php echo $result['total_number']; ?></p>
           </div>
           <div class="w-1/2 shadow-lg flex flex-col justify-center items-center rounded-2xl py-10 bg-blue-200 text-blue-600">
             <p>Alumni</p>
-            <p class="text-4xl font-bold">10</p>
+            <?php
+            $obj = new Alumni();
+            $result = $obj->get_alumni_count();
+            ?>
+            <p class="text-4xl font-bold"><?php echo $result['total_number']; ?></p>
           </div>
         </div>
 
         <h1 class="my-2 text-xl text-red-700 border-b-2 border-red-200">Quick links</h1>
-        <ul>
-          <li><a href="">Dashboard</a></li>
-          <li><a href="">Dashboard</a></li>
-          <li><a href="">Dashboard</a></li>
-          
-        </ul>
+        
       </section>
     </div>
   </main>

@@ -62,4 +62,16 @@ class Course
                 return false;
         }
     }
+
+    public function get_course_count()
+    {
+        $query = "
+        SELECT COUNT(*) AS total_number FROM ".$this->course_table." WHERE 1;
+        ";
+        $stmt = $this->conn->prepare($query);
+        if ($stmt->execute()) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
 }
