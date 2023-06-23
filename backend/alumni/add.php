@@ -32,13 +32,13 @@ class AddAlumni
             return false;
     }
 
-    public function add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $pass_year, $cgpa, $course, $address, $position)
+    public function add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $batch, $pass_year, $cgpa, $course, $address, $position)
     {
         if($this->check_duplicacy($registration)) {
             return 2;
         } else {
             $query = "
-            INSERT INTO " . $this->alumni_table . " SET registration_no = :registration, rollno = :rollno, fname = :fname, mname = :mname, lname = :lname, dob = :dob, phone = :phone, email = :email, pass_year = :pass_year, cgpa = :cgpa, course = :course, address = :address, position = :position
+            INSERT INTO " . $this->alumni_table . " SET registration_no = :registration, rollno = :rollno, fname = :fname, mname = :mname, lname = :lname, dob = :dob, phone = :phone, email = :email, batch = :batch, pass_year = :pass_year, cgpa = :cgpa, course = :course, address = :address, position = :position
             ;
             ";
             $stmt = $this->conn->prepare($query);
@@ -50,6 +50,7 @@ class AddAlumni
             $stmt->bindParam("dob", $dob);
             $stmt->bindParam("phone", $phone);
             $stmt->bindParam("email", $email);
+            $stmt->bindParam("batch", $batch);
             $stmt->bindParam("pass_year", $pass_year);
             $stmt->bindParam("cgpa", $cgpa);
             $stmt->bindParam("course", $course);
@@ -78,6 +79,19 @@ class AddAlumni
             if ($stmt->rowCount() > 0) {
                 $alumnies = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $alumnies;
+            } else
+                return false;
+        }
+    }
+
+    public function get_all_alumni() {
+        $query = "
+        SELECT * FROM ".$this->alumni_table." WHERE 1;
+        ";
+        $stmt = $this->conn->prepare($query);
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                return $stmt;
             } else
                 return false;
         }

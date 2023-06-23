@@ -84,6 +84,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
     $dob = $_POST['dob'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
+    $batch = $_POST['batch'];
     $pass_year = $_POST['pass_year'];
     $cgpa = $_POST['cgpa'];
     $course = $_POST['course'];
@@ -94,7 +95,7 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
       echo '<script>no_course();</script>';
     } else {
       $add_obj = new AddAlumni();
-      $status = $add_obj->add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $pass_year, $cgpa, $course, $address, $position);
+      $status = $add_obj->add_alumni($registration, $rollno, $fname, $mname, $lname, $dob, $phone, $email, $batch, $pass_year, $cgpa, $course, $address, $position);
       if ($status == 1) {
         echo '<script>added();</script>';
       } elseif($status == 2) {
@@ -192,7 +193,12 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
               </select>
             </div>
           </div>
-
+          <div class="md:flex">
+            <div class="p-2 w-full md:w-1/3 flex flex-col">
+              <label class="text-sm text-blue-500" for="batch">Batch <span class="text-red-500">*</span></label>
+              <input type="text" name="batch" id="batch" placeholder="2018-2019" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100" required>
+            </div>
+          </div>
           <div class="md:flex">
             <div class="p-2 w-full flex flex-col">
               <label class="text-sm text-blue-500" for="address">Address <span class="text-red-500">*</span></label>
