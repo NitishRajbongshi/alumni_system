@@ -53,11 +53,11 @@ CREATE TABLE `alumni_table` (
   `mname` varchar(15) NOT NULL,
   `lname` varchar(18) NOT NULL,
   `dob` varchar(10) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `email` varchar(45) NOT NULL,
   `batch` varchar(9) NOT NULL,
   `pass_year` int(4) NOT NULL,
-  `cgpa` int(4) NOT NULL,
+  `cgpa` varchar(4) NOT NULL,
   `course` varchar(50) NOT NULL,
   `address` varchar(150) NOT NULL,
   `position` varchar(150) NOT NULL
