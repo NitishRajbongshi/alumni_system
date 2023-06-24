@@ -1,11 +1,24 @@
 <?php
 include_once __DIR__ . '/../../backend/alumni/Alumni.php';
+include_once __DIR__ . '/../../backend/admin/Admin.php';
 session_start();
 if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !isset($_SESSION['loggedin']) || !isset($_SESSION['adminLogin'])) {
     session_unset();
     session_destroy();
     header('location: login.php');
     exit;
+}
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $current_password = $_POST['cp'];
+    $new_password = $_POST['np'];
+    if(isset($new_password)){
+        $admin_obj = new Admin();
+        if($admin_obj->change_password($_SESSION['email'], $current_password, $new_password)) {
+            echo '<script>alert("Password updated");</script>';
+        } else {
+            echo '<script>alert("Password failed to updated");</script>';
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -62,15 +75,31 @@ if (($_SESSION['loggedin'] == false) || ($_SESSION['adminLogin'] == false) || !i
             </section>
             <section class="mt-2 w-full  md:w-2/3 md:mt-20">
                 <img class="rounded-xl shadow-md hover:shadow-lg" src="../../assets/images/banner.png" alt="banner" width="100%">
-                <!-- <p class="text-2xl text-red-600 border-b-2 border-red-200">Notification <i class="fa-solid fa-comment"></i></p>
-                <ul>
-                    <li class="my-2 text-gray-500"><i class="fa-solid fa-face-smile me-2"></i>No notification found</li>
-                </ul> -->
+            </section>
+        </div>
+
+        <div class="w-full flex flex-col gap-2 md:flex-row ">
+            <section class="mt-2 w-full p-4 rounded-xl shadow-md hover:shadow-lg bg-white md:w-1/3">
+                <h1 class="my-2 text-xl text-blue-700 border-b-2 border-blue-200">Change password</h1>
+
+                <form action="" method="POST">
+                    <div class="w-full flex flex-col">
+                        <label class="text-sm my-2 text-blue-500" for="cp">Current Password <span class="text-red-500">*</span></label>
+                        <input type="password" name="cp" id="cp" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100" placeholder="xxxxxxxxxx" maxlength="20" required>
+                    </div>
+                    <div class="w-full flex flex-col">
+                        <label class="text-sm my-2 text-blue-500" for="np">New Password <span class="text-red-500">*</span></label>
+                        <input type="password" name="np" id="np" class="text-md p-1 outline-1 outline-blue-200 border-b-2 border-blue-100" placeholder="xxxxxxxxxx" maxlength="20" required>
+                    </div>
+                    <div class="my-3">
+                        <input class="bg-blue-100 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-300 hover:cursor-pointer hover:shadow-sm" type="submit" name="submit" value="Confirm">
+                    </div>
+                </form>
             </section>
         </div>
 
         <div class="container mx-auto py-8">
-            <h1 class="text-2xl font-bold text-red-600">Statistics</h1>
+            <h1 class="text-2xl font-bold text-red-600 border-b-2 border-red-200">Statistics</h1>
             <p class="my-2 text-md text-blue-500">How many alumni do we have??</p>
             <div class="grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2">
                 <?php
