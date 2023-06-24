@@ -13,4 +13,18 @@ Alumni Management System! This platform is designed to store and manage alumni d
 6. View database
 7. Dynamic page 
 
+# Screenshots
 
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/684f65bb-c2f3-4450-b031-bc224dd1e7c5)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/9364aec9-dc16-4b37-9607-019b67529449)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/22d9ffbc-1f27-45b6-bda9-9b2192815669)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/4cd44ee2-d157-4904-acf7-5b498ff672cf)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/b4686a41-172c-429d-885f-1c0d5b062d53)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/e2b0e163-6126-4152-ad98-ee51423b3c79)
+
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/f8cae9a5-a3c5-41f9-b35b-9d918eae7bf9)
