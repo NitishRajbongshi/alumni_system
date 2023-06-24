@@ -18,6 +18,8 @@ Alumni Management System! This platform is designed to store and manage alumni d
 
 ![Admin](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/1b9b9ff1-6d3e-4ef2-a7b8-a3769ebc655b)
 
+2. Relational Model
+![image](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/de536658-150a-4c23-8b5a-9d4b59200a05)
 
 # Screenshots
 
