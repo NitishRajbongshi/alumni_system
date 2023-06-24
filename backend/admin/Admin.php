@@ -35,5 +35,25 @@ class Admin {
         }
         return false;
     }
+
+    public function change_password($email, $current, $new) {
+        $query = "
+            UPDATE ".$this->admin_table." SET password = :new_password WHERE email = :email AND password = :current_password
+        ";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam("email", $email);
+        $stmt->bindParam("new_password", $new);
+        $stmt->bindParam("current_password", $current);
+        if($stmt->execute()) {
+            if($stmt->rowCount() == 1) {
+                return true;
+            }
+            else 
+                return false;
+        } 
+        else
+            return false;
+    }
 }
 
