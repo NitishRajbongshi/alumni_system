@@ -11,7 +11,13 @@ Alumni Management System! This platform is designed to store and manage alumni d
 4. Add alumni
 5. Manage course and alumni
 6. View database
-7. Dynamic page 
+7. Dynamic page
+
+# Design
+1. ER-Diagram
+
+![Admin](https://github.com/NitishRajbongshi/alumni_system/assets/79085998/1b9b9ff1-6d3e-4ef2-a7b8-a3769ebc655b)
+
 
 # Screenshots
 
